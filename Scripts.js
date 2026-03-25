@@ -1,21 +1,22 @@
 // 1. TYPING EFFECT LOGIC
-const typingText = document.getElementById("typing-text");
-// Move the selection INSIDE a variable that updates
 let typingText; 
-
-function type() {
-    // Add this line at the start of the function to "find" the element again
-    if (!typingText) typingText = document.getElementById("typing-text");
-    
-    const currentPhrase = phrases[phraseIndex];
-    // ... the rest of your code remains the same
+const phrases = ["ene dawit ebabalew personal trainer negn"]; // Re-added the phrase
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 
 function type() {
+    // Safety Check: Find the element if it's not already stored
+    if (!typingText) {
+        typingText = document.getElementById("typing-text");
+    }
+
+    // If the element still isn't found, stop the function to avoid errors
+    if (!typingText) return;
+
     const currentPhrase = phrases[phraseIndex];
     
+    // Logic for typing and deleting
     if (isDeleting) {
         typingText.textContent = currentPhrase.substring(0, charIndex - 1);
         charIndex--;
@@ -26,9 +27,10 @@ function type() {
 
     let typeSpeed = isDeleting ? 50 : 100;
 
+    // Logic for pausing and switching phrases
     if (!isDeleting && charIndex === currentPhrase.length) {
         isDeleting = true;
-        typeSpeed = 2000; // Pause at end
+        typeSpeed = 2000; // Pause at the end
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         phraseIndex = (phraseIndex + 1) % phrases.length;
@@ -51,12 +53,15 @@ window.addEventListener("scroll", () => {
 function toggleTheme() {
     document.body.classList.toggle("light-mode");
     
-    // Optional: Add a haptic-style vibration or sound effect here if on mobile
     const dumbbell = document.querySelector('.dumbbell-icon');
-    dumbbell.style.transform = document.body.classList.contains("light-mode") 
-        ? "rotateY(180deg)" 
-        : "rotateY(0deg)";
+    if (dumbbell) {
+        dumbbell.style.transform = document.body.classList.contains("light-mode") 
+            ? "rotateY(180deg)" 
+            : "rotateY(0deg)";
+    }
 }
 
 // Start typing on load
-document.addEventListener("DOMContentLoaded", type);
+document.addEventListener("DOMContentLoaded", () => {
+    type();
+});
