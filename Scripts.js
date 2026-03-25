@@ -1,6 +1,6 @@
 // 1. TYPING EFFECT LOGIC
 const typingText = document.getElementById("typing-text");
-const phrases = ["Engineering Elite Athletes", "Master Your Mechanics", "Explosive Power Coach"];
+const phrases = ["ene dawit ebabalew personal trainer negn"];
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
