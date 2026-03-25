@@ -53,16 +53,8 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// 3. THEME TOGGLE LOGIC
 function toggleTheme() {
     document.body.classList.toggle("light-mode");
-    
-    const dumbbell = document.querySelector('.dumbbell-icon');
-    if (dumbbell) {
-        dumbbell.style.transform = document.body.classList.contains("light-mode") 
-            ? "rotateY(180deg)" 
-            : "rotateY(0deg)";
-    }
 }
 
 // Start typing on load
