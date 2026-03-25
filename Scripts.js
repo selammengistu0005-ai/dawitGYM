@@ -54,7 +54,12 @@ window.addEventListener("scroll", () => {
 });
 
 function toggleTheme() {
+    // This flips the 'switch' on the body. 
+    // The CSS variables and the dumbbell rotation will react instantly.
     document.body.classList.toggle("light-mode");
+    
+    // Optional: Log to console to verify the click is registering
+    console.log("Theme toggled. Light mode is now:", document.body.classList.contains("light-mode"));
 }
 
 // Start typing on load
