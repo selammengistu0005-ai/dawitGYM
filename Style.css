@@ -14,6 +14,7 @@ body.light-mode {
     --bg: #f8fafc;
     --text: #1e293b;
     --accent: #0984e3;
+    --accent-glow: rgba(9, 132, 227, 0.2); /* Cleaned up for light mode */
     --glass: rgba(255, 255, 255, 0.8);
     --border: rgba(0, 0, 0, 0.05);
 }
