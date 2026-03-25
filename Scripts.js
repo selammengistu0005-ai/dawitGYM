@@ -1,6 +1,14 @@
 // 1. TYPING EFFECT LOGIC
 const typingText = document.getElementById("typing-text");
-const phrases = ["Testing the script"];
+// Move the selection INSIDE a variable that updates
+let typingText; 
+
+function type() {
+    // Add this line at the start of the function to "find" the element again
+    if (!typingText) typingText = document.getElementById("typing-text");
+    
+    const currentPhrase = phrases[phraseIndex];
+    // ... the rest of your code remains the same
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
