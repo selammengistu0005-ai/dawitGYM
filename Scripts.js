@@ -1,25 +1,21 @@
 // 1. TYPING EFFECT LOGIC
 let typingText; 
 const phrases = [
-    "እኔ ዳዊት እባላለሁ", 
-    "የ ስፖርት አሰልታኝ ነኝ"
+    "እኔ ዳዊት እባላለሁ", 
+    "የ ስፖርት አሰልታኝ ነኝ"
 ];
 let phraseIndex = 0;
-let wordIndex = 0; // Tracks the number of words shown
+let wordIndex = 0; 
 let isDeleting = false;
 
 function type() {
-    // Safety Check: Find the element if it's not already stored
     if (!typingText) {
         typingText = document.getElementById("typing-text");
     }
 
-    // If the element still isn't found, stop the function to avoid errors
     if (!typingText) return;
 
     const currentPhrase = phrases[phraseIndex];
-    
-    // Logic for typing and deleting
     const words = currentPhrase.split(" ");
     
     if (isDeleting) {
@@ -34,17 +30,20 @@ function type() {
     const wordsArray = currentPhrase.split(" ");
 
     if (!isDeleting && wordIndex === wordsArray.length) {
-        // If we just finished the LAST phrase in the array, STOP typing.
         if (phraseIndex === phrases.length - 1) {
-            return; // This exits the function and stops the loop forever
+            return; // Stops perfectly on the final Amharic phrase
         }
         isDeleting = true;
         typeSpeed = 2000; 
     } else if (isDeleting && wordIndex === 0) {
         isDeleting = false;
-        phraseIndex++; // Move to the next phrase
+        phraseIndex++; 
         typeSpeed = 500;
     }
+
+    // THIS LINE WAS MISSING: It keeps the loop moving
+    setTimeout(type, typeSpeed);
+} // THIS BRACKET WAS MISSING: It closes the type function
 
 // 2. SCROLL-TO-DOCK LOGIC
 window.addEventListener("scroll", () => {
@@ -55,12 +54,9 @@ window.addEventListener("scroll", () => {
     }
 });
 
+// 3. THEME TOGGLE
 function toggleTheme() {
-    // This flips the 'switch' on the body. 
-    // The CSS variables and the dumbbell rotation will react instantly.
     document.body.classList.toggle("light-mode");
-    
-    // Optional: Log to console to verify the click is registering
     console.log("Theme toggled. Light mode is now:", document.body.classList.contains("light-mode"));
 }
 
