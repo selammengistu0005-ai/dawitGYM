@@ -1,6 +1,9 @@
 // 1. TYPING EFFECT LOGIC
 let typingText; 
-const phrases = ["ene dawit ebabalew personal trainer negn"];
+const phrases = [
+    "እኔ ዳዊት እባላለሁ", 
+    "የ ስፖርት አሰልታኝ ነኝ"
+];
 let phraseIndex = 0;
 let wordIndex = 0; // Tracks the number of words shown
 let isDeleting = false;
@@ -28,21 +31,20 @@ function type() {
     }
 
     let typeSpeed = isDeleting ? 50 : 100;
-
-    // Logic for pausing and switching phrases
-   // Logic for pausing and switching phrases
     const wordsArray = currentPhrase.split(" ");
+
     if (!isDeleting && wordIndex === wordsArray.length) {
+        // If we just finished the LAST phrase in the array, STOP typing.
+        if (phraseIndex === phrases.length - 1) {
+            return; // This exits the function and stops the loop forever
+        }
         isDeleting = true;
         typeSpeed = 2000; 
     } else if (isDeleting && wordIndex === 0) {
         isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
+        phraseIndex++; // Move to the next phrase
         typeSpeed = 500;
     }
-
-    setTimeout(type, typeSpeed);
-}
 
 // 2. SCROLL-TO-DOCK LOGIC
 window.addEventListener("scroll", () => {
