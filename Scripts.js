@@ -1,8 +1,8 @@
 // 1. TYPING EFFECT LOGIC
 let typingText; 
-const phrases = ["ene dawit ebabalew personal trainer negn"]; // Re-added the phrase
+const phrases = ["ene dawit ebabalew personal trainer negn"];
 let phraseIndex = 0;
-let charIndex = 0;
+let wordIndex = 0; // Tracks the number of words shown
 let isDeleting = false;
 
 function type() {
@@ -17,21 +17,25 @@ function type() {
     const currentPhrase = phrases[phraseIndex];
     
     // Logic for typing and deleting
+    const words = currentPhrase.split(" ");
+    
     if (isDeleting) {
-        typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
+        typingText.textContent = words.slice(0, wordIndex - 1).join(" ");
+        wordIndex--;
     } else {
-        typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
+        typingText.textContent = words.slice(0, wordIndex + 1).join(" ");
+        wordIndex++;
     }
 
     let typeSpeed = isDeleting ? 50 : 100;
 
     // Logic for pausing and switching phrases
-    if (!isDeleting && charIndex === currentPhrase.length) {
+   // Logic for pausing and switching phrases
+    const wordsArray = currentPhrase.split(" ");
+    if (!isDeleting && wordIndex === wordsArray.length) {
         isDeleting = true;
-        typeSpeed = 2000; // Pause at the end
-    } else if (isDeleting && charIndex === 0) {
+        typeSpeed = 2000; 
+    } else if (isDeleting && wordIndex === 0) {
         isDeleting = false;
         phraseIndex = (phraseIndex + 1) % phrases.length;
         typeSpeed = 500;
