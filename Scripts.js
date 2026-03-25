@@ -1,8 +1,8 @@
 // 1. TYPING EFFECT LOGIC
 let typingText; 
 const phrases = [
-    "እኔ ዳዊት እባላለሁ", 
-    "የ ስፖርት አሰልታኝ ነኝ"
+    "እኔ ዳዊት እባላለሁ.......", 
+    "Personal trainer ነኝ......"
 ];
 let phraseIndex = 0;
 let wordIndex = 0; 
