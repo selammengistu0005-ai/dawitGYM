@@ -26,7 +26,7 @@ function type() {
         wordIndex++;
     }
 
-    let typeSpeed = isDeleting ? 50 : 100;
+    let typeSpeed = isDeleting ? 100 : 250;
     const wordsArray = currentPhrase.split(" ");
 
     if (!isDeleting && wordIndex === wordsArray.length) {
