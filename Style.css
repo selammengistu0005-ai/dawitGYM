@@ -226,30 +226,27 @@ body.light-mode .dumbbell-icon {
 
 .boxer-speech-bubble {
     position: relative;
-    background: rgba(255, 255, 255, 0.05); /* The "Glass" effect tint */
-    backdrop-filter: blur(10px); /* The blurring magic */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 25px 30px;
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03); 
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px 35px;
+    border-radius: 16px;
     max-width: 450px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    margin-left: 60px; /* Gap for the tail to sit in */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    margin-left: 50px;
     z-index: 10;
 }
 
 .boxer-speech-bubble::before {
     content: '';
     position: absolute;
-    left: -20px; /* Keep this */
-    
-    /* THE MOVEMENT: This moves the tail down to the bottom corner */
-    bottom: 25px; /* Puts the tail 25px up from the bottom edge */
-    top: auto; /* Disables the previous centering we had */
-    transform: none; /* Disables the previous centering we had */
-    
-    border-width: 10px 20px 10px 0; /* Creates the triangle shape */
-    border-style: solid;
-    border-color: transparent rgba(255, 255, 255, 0.15) transparent transparent;
+    left: -15px;
+    bottom: 20px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 15px solid rgba(255, 255, 255, 0.1); 
+    filter: drop-shadow(-2px 0px 2px rgba(0,0,0,0.2));
 }
 
 .bio-title {
