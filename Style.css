@@ -240,9 +240,13 @@ body.light-mode .dumbbell-icon {
 .boxer-speech-bubble::before {
     content: '';
     position: absolute;
-    left: -20px; /* Moves it outside the box to the left */
-    top: 50%;
-    transform: translateY(-50%);
+    left: -20px; /* Keep this */
+    
+    /* THE MOVEMENT: This moves the tail down to the bottom corner */
+    bottom: 25px; /* Puts the tail 25px up from the bottom edge */
+    top: auto; /* Disables the previous centering we had */
+    transform: none; /* Disables the previous centering we had */
+    
     border-width: 10px 20px 10px 0; /* Creates the triangle shape */
     border-style: solid;
     border-color: transparent rgba(255, 255, 255, 0.15) transparent transparent;
