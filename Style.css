@@ -209,6 +209,7 @@ body.light-mode .dumbbell-icon {
     margin: -60px auto 0 auto;
     z-index: 5;
     display: flex;
+    align-items: center;
     justify-content: flex-start; /* Aligns the boxer to the LEFT */
     padding-left: 50px;
     min-height: 550px;
@@ -221,6 +222,48 @@ body.light-mode .dumbbell-icon {
     gap: 30px;
     padding: 20px 0;
     width: 100%;
+}
+
+.boxer-speech-bubble {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05); /* The "Glass" effect tint */
+    backdrop-filter: blur(10px); /* The blurring magic */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 25px 30px;
+    border-radius: 20px;
+    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-left: 60px; /* Gap for the tail to sit in */
+    z-index: 10;
+}
+
+.boxer-speech-bubble::before {
+    content: '';
+    position: absolute;
+    left: -20px; /* Moves it outside the box to the left */
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 10px 20px 10px 0; /* Creates the triangle shape */
+    border-style: solid;
+    border-color: transparent rgba(255, 255, 255, 0.15) transparent transparent;
+}
+
+.bio-title {
+    color: #00f2fe; /* Glowing Cyan */
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: sans-serif; /* Or your custom font */
+}
+
+.bio-text {
+    color: #ffffff;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    margin: 0;
+    opacity: 0.9;
 }
 
 .boxer-container {
