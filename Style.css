@@ -163,7 +163,7 @@ body.light-mode .dumbbell-icon {
 
 .plans-carousel-section {
     width: 100%;
-    margin-top: 150px; /* This is the "Force Field" pushing the cards down */
+    margin-top: 350px;
     position: relative;
     display: block;
 }
@@ -211,7 +211,7 @@ body.light-mode .dumbbell-icon {
     display: flex;
     justify-content: flex-start; /* Aligns the boxer to the LEFT */
     padding-left: 50px;
-    min-height: 450px;
+    min-height: 550px;
 }
 
 .bio-section {
