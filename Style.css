@@ -157,7 +157,9 @@ body.light-mode .dumbbell-icon {
 .weight.right { right: 0; }
 
 /* 5. THE 3D CAROUSEL (Plans) */
-.hero-spacer { height: 100vh; } /* Creates room for the initial center profile */
+.hero-spacer { 
+    height: 45vh; /* This cuts the empty "waiting" space in half */
+}
 
 .carousel-container {
     perspective: 1200px;
@@ -197,7 +199,7 @@ body.light-mode .dumbbell-icon {
     position: relative;
     width: 100%;
     max-width: 1200px;
-    margin: -40px auto 0 auto; /* Negative margin pulls it CLOSER to the profile text */
+    margin: -60px auto 0 auto;
     z-index: 5;
     display: flex;
     justify-content: flex-start; /* Aligns the boxer to the LEFT */
