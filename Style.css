@@ -161,10 +161,10 @@ body.light-mode .dumbbell-icon {
 
 .carousel-container {
     perspective: 1200px;
-    padding: 150px 0; /* Increased padding to push cards down */
+    padding: 80px 0; /* Reduced padding */
     position: relative;
-    min-height: 600px; /* Ensures the "ghost" cards have a large enough container */
-    margin-top: 50px; /* Extra gap between Boxer and Cards */
+    min-height: 500px;
+    margin-top: -20px; /* Pulls the cards UP toward the boxer */
 }
 
 .carousel-track {
@@ -196,20 +196,22 @@ body.light-mode .dumbbell-icon {
 .bio-wrapper {
     position: relative;
     width: 100%;
-    min-height: 500px; /* This creates the physical space the cards can't enter */
-    z-index: 5; /* Keeps the boxer "above" the carousel layer */
+    max-width: 1200px;
+    margin: -40px auto 0 auto; /* Negative margin pulls it CLOSER to the profile text */
+    z-index: 5;
     display: flex;
-    justify-content: center;
-    background: transparent;
+    justify-content: flex-start; /* Aligns the boxer to the LEFT */
+    padding-left: 50px;
+    min-height: 450px;
 }
 
 .bio-section {
     display: flex;
+    flex-direction: row; /* Keeps boxer and text side-by-side */
     align-items: center;
-    gap: 40px;
-    padding: 100px 40px;
-    max-width: 1100px;
-    margin: 0 auto;
+    gap: 30px;
+    padding: 20px 0;
+    width: 100%;
 }
 
 .boxer-container {
