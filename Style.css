@@ -161,7 +161,10 @@ body.light-mode .dumbbell-icon {
 
 .carousel-container {
     perspective: 1200px;
-    padding: 100px 0;
+    padding: 150px 0; /* Increased padding to push cards down */
+    position: relative;
+    min-height: 600px; /* Ensures the "ghost" cards have a large enough container */
+    margin-top: 50px; /* Extra gap between Boxer and Cards */
 }
 
 .carousel-track {
@@ -190,6 +193,16 @@ body.light-mode .dumbbell-icon {
 @keyframes blink { 50% { opacity: 0; } }
 
 /* 6. OUT OF BOUNDS BOXER EFFECT */
+.bio-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 500px; /* This creates the physical space the cards can't enter */
+    z-index: 5; /* Keeps the boxer "above" the carousel layer */
+    display: flex;
+    justify-content: center;
+    background: transparent;
+}
+
 .bio-section {
     display: flex;
     align-items: center;
@@ -225,7 +238,7 @@ body.light-mode .dumbbell-icon {
     transform: translateX(-50%) scale(1.1); /* Scale(1.1) makes you "larger" than the circle */
     width: 100%;
     height: auto;
-    z-index: 2; /* Sits on top of the circle */
+    z-index: 20; /* Sits on top of the circle */
     transition: transform 0.4s ease;
     pointer-events: none;
 }
