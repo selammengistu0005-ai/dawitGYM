@@ -1,4 +1,7 @@
 // 1. TYPING EFFECT LOGIC
+// NEW: Boxer Typing Data
+const boxerBioText = "Every punch is a calculation. Every movement is physics in motion. I don't just train bodies; I engineer champions.";
+let boxerCharIndex = 0;
 let typingText; 
 const phrases = [
     "እኔ ዳዊት እባላለሁ.......", 
@@ -45,6 +48,16 @@ function type() {
     setTimeout(type, typeSpeed);
 } // THIS BRACKET WAS MISSING: It closes the type function
 
+// NEW: Boxer HUD Typing Function
+function typeBoxerBio() {
+    const boxerElement = document.getElementById("boxer-typing-text");
+    if (boxerElement && boxerCharIndex < boxerBioText.length) {
+        boxerElement.textContent += boxerBioText.charAt(boxerCharIndex);
+        boxerCharIndex++;
+        setTimeout(typeBoxerBio, 40); 
+    }
+}
+
 // 2. SCROLL-TO-DOCK LOGIC
 window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
@@ -60,7 +73,8 @@ function toggleTheme() {
     console.log("Theme toggled. Light mode is now:", document.body.classList.contains("light-mode"));
 }
 
-// Start typing on load
+// Start both typing effects on load
 document.addEventListener("DOMContentLoaded", () => {
-    type();
+    type();          // Starts your Amharic name typing
+    typeBoxerBio();  // Starts the Boxer's HUD typing
 });
