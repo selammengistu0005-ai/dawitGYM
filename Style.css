@@ -293,6 +293,7 @@ body.light-mode .dumbbell-icon {
 }
 
 .circle-bg {
+    display: none;
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -323,6 +324,7 @@ body.light-mode .dumbbell-icon {
 }
 
 .circle-front-rim {
+    display: none;
     position: absolute;
     bottom: 20px; /* MATCHES circle-bg */
     left: 50%;
