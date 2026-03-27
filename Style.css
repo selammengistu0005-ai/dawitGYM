@@ -286,11 +286,9 @@ body.light-mode .dumbbell-icon {
     width: 300px;
     height: 300px; 
     flex-shrink: 0;
-    /* This creates the 'circular window' that cuts the bottom of the image */
-    border-radius: 0 0 150px 150px; 
-    overflow: hidden;
     display: flex;
     align-items: flex-end;
+    justify-content: center;
 }
 
 .circle-bg {
@@ -309,15 +307,17 @@ body.light-mode .dumbbell-icon {
     position: absolute;
     bottom: 0; 
     left: 50%;
-    /* We keep the scale large so the head 'pops' out of the top of the container */
     transform: translateX(-50%) scale(1.3); 
     width: 100%;
     height: auto;
     z-index: 20; 
     transition: transform 0.4s ease;
     pointer-events: none;
-    /* This ensures the image is anchored to the bottom of the circle */
-    transform-origin: bottom; 
+    transform-origin: bottom;
+
+    /* THE FIX: This masks only the bottom into a circle shape */
+    -webkit-mask-image: radial-gradient(circle at bottom, black 70%, transparent 71%);
+    mask-image: radial-gradient(circle at bottom, black 70%, transparent 71%);
 }
 
 /* Hover Effect: The "Punch" out of the frame */
