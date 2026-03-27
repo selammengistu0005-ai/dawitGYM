@@ -73,6 +73,35 @@ function toggleTheme() {
     console.log("Theme toggled. Light mode is now:", document.body.classList.contains("light-mode"));
 }
 
+// 4. 3D CAROUSEL ROTATION LOGIC
+const cards = document.querySelectorAll('.plan-card');
+let cardClasses = ['far-left', 'left-card', 'active-card', 'right-card', 'far-right'];
+
+function updateCarousel() {
+    cards.forEach((card, i) => {
+        // Remove all possible position classes
+        card.classList.remove('far-left', 'left-card', 'active-card', 'right-card', 'far-right');
+        // Add the new class based on the current array state
+        card.classList.add(cardClasses[i]);
+    });
+}
+
+// Click to Rotate (Updated Logic)
+cards.forEach((card) => {
+    card.addEventListener('click', () => {
+        // Find out which position this card currently has
+        const currentClass = card.classList[1]; // Gets the second class (e.g., 'active-card')
+
+        if (currentClass === 'left-card' || currentClass === 'far-left') {
+            cardClasses.unshift(cardClasses.pop());
+            updateCarousel();
+        } else if (currentClass === 'right-card' || currentClass === 'far-right') {
+            cardClasses.push(cardClasses.shift());
+            updateCarousel();
+        }
+    });
+});
+
 // Start both typing effects on load
 document.addEventListener("DOMContentLoaded", () => {
     type();          // Starts your Amharic name typing
