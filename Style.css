@@ -2,8 +2,8 @@
 :root {
     --bg: #0f172a;
     --text: #f1f2f6;
-    --accent: #00ff88; /* High-energy Green */
-    --accent-glow: rgba(0, 255, 136, 0.6);
+    --accent: #00ff88; 
+    --accent-glow: rgba(0, 255, 136, 0.4);
     --glass: rgba(30, 41, 59, 0.7);
     --border: rgba(255, 255, 255, 0.1);
     --blur: blur(12px);
@@ -207,7 +207,7 @@ body.light-mode .dumbbell-icon {
     position: relative;
     width: 100%;
     max-width: 1200px;
-    margin: 40px auto 0 auto;
+    margin: -40px auto 0 auto;
     z-index: 5;
     display: flex;
     align-items: center;
@@ -227,63 +227,43 @@ body.light-mode .dumbbell-icon {
 
 .boxer-container {
     position: relative;
-    width: 320px; 
-    height: 400px; 
+    width: 320px;
+    height: 380px; 
     flex-shrink: 0;
-    perspective: 1000px; 
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
 }
 
-/* THE BACK LAYER: Glowing Green Hole */
+/* FLAT GREEN CIRCLE */
 .circle-bg {
-    display: block; /* RE-ENABLED */
+    display: block;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0.4) 100%);
+    border-radius: 50%;
+    border: 4px solid var(--accent);
+    box-shadow: 0 0 30px var(--accent-glow);
+    z-index: 1;
+}
+
+/* THE IMAGE OVERLAPPING THE CIRCLE */
+.out-of-bounds-img {
     position: absolute;
     bottom: 0;
     left: 50%;
-    /* 75deg makes it look flat on the floor */
-    transform: translateX(-50%) rotateX(75deg); 
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle, var(--accent-glow) 0%, #000 85%);
-    border-radius: 50%;
-    border: 5px solid var(--accent);
-    box-shadow: 0 0 50px var(--accent-glow), inset 0 0 30px var(--accent-glow);
-    z-index: 1;
-    box-sizing: border-box; 
-}
-
-/* THE BOXER: Vertical and pop-out */
-.out-of-bounds-img {
-    position: absolute;
-    bottom: 20px; /* Feet sit inside the hole */
-    left: 50%;
-    transform: translateX(-50%) scale(1.35);
-    width: 100%;
+    transform: translateX(-50%) scale(1.2);
+    width: 110%;
     height: auto;
-    z-index: 5;
+    z-index: 5; /* Sits on top of the circle */
     transition: transform 0.4s ease;
     pointer-events: none;
-    transform-origin: bottom;
 }
 
-/* THE FRONT LAYER: Snaps to the back layer */
+/* THE RIM (Hidden or set to flat if you want it to wrap the waist) */
 .circle-front-rim {
-    display: block; /* RE-ENABLED */
-    position: absolute;
-    bottom: 0; /* Match circle-bg exactly */
-    left: 50%;
-    transform: translateX(-50%) rotateX(75deg); /* Match rotation exactly */
-    width: 320px;
-    height: 160px; 
-    border-radius: 0 0 160px 160px;
-    border: 5px solid var(--accent);
-    border-top: none; 
-    background: transparent;
-    z-index: 10; 
-    pointer-events: none;
-    box-sizing: border-box; 
+    display: none; /* Removed the 3D rim to keep the frame simple */
 }
 
 .boxer-speech-bubble {
@@ -291,14 +271,13 @@ body.light-mode .dumbbell-icon {
     display: flex;
     flex-direction: column;
     justify-content: flex-end; 
-    background: rgba(15, 23, 42, 0.8); 
-    backdrop-filter: blur(15px); 
-    border: 1px solid rgba(0, 255, 136, 0.2);
-    padding: 25px 30px;
+    background: var(--glass); 
+    backdrop-filter: var(--blur);
+    border: 1px solid var(--border);
+    padding: 20px 30px;
     border-radius: 20px;
     max-width: 400px;
     min-height: 60px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
     margin-left: 50px;
     z-index: 10;
 }
@@ -311,7 +290,14 @@ body.light-mode .dumbbell-icon {
     text-transform: uppercase;
 }
 
-/* Hover Effect */
+.bio-text {
+    color: #ffffff;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
 .boxer-container:hover .out-of-bounds-img {
-    transform: translateX(-50%) scale(1.4) translateY(-10px);
+    transform: translateX(-50%) scale(1.25) translateY(-10px);
 }
