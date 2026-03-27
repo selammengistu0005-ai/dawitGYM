@@ -284,11 +284,8 @@ body.light-mode .dumbbell-icon {
 .boxer-container {
     position: relative;
     width: 300px;
-    height: 300px; 
+    height: 300px; /* The height of the "Frame" */
     flex-shrink: 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
 }
 
 .circle-bg {
@@ -305,22 +302,18 @@ body.light-mode .dumbbell-icon {
 
 .out-of-bounds-img {
     position: absolute;
-    bottom: 0; 
+    bottom: 0; /* Keeps your feet/waist at the bottom of the circle */
     left: 50%;
-    transform: translateX(-50%) scale(1.3); 
+    transform: translateX(-50%) scale(1.1); /* Scale(1.1) makes you "larger" than the circle */
     width: 100%;
     height: auto;
-    z-index: 20; 
+    z-index: 20; /* Sits on top of the circle */
     transition: transform 0.4s ease;
     pointer-events: none;
-    transform-origin: bottom;
-
-    /* THE FIX: This masks only the bottom into a circle shape */
-    -webkit-mask-image: radial-gradient(circle at bottom, black 70%, transparent 71%);
-    mask-image: radial-gradient(circle at bottom, black 70%, transparent 71%);
 }
 
 /* Hover Effect: The "Punch" out of the frame */
+/* Hover Effect: The "Punch" out of the frame */
 .boxer-container:hover .out-of-bounds-img {
-    transform: translateX(-50%) scale(1.4);
+    transform: translateX(-50%) scale(1.2) translateY(-10px);
 }
