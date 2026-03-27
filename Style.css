@@ -226,14 +226,25 @@ body.light-mode .dumbbell-icon {
 
 .boxer-speech-bubble {
     position: relative;
-    background: rgba(30, 41, 59, 0.6); /* Match your --glass variable depth */
+    /* THE MAGIC: Pins content to the bottom so it expands UP */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+
+    background: rgba(30, 41, 59, 0.6); 
     backdrop-filter: blur(15px); 
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 25px 35px;
+    padding: 20px 30px;
     border-radius: 20px;
-    max-width: 450px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent-glow);
+    max-width: 400px;
+    
+    /* Starting height when empty */
+    min-height: 60px; 
+    
+    /* Smooth motorized expansion */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    
     margin-left: 50px;
     z-index: 10;
 }
@@ -242,10 +253,13 @@ body.light-mode .dumbbell-icon {
     content: '';
     position: absolute;
     left: -19px;
-    bottom: 30px; 
+    /* Fixed to the bottom corner */
+    bottom: 20px; 
+    
     border-top: 12px solid transparent; 
     border-bottom: 4px solid transparent;
-    border-right: 20px solid rgba(30, 41, 59, 0.6);
+    border-right: 20px solid rgba(30, 41, 59, 0.6); 
+    
     filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.3));
 }
 
