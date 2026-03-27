@@ -284,9 +284,9 @@ body.light-mode .dumbbell-icon {
 .boxer-container {
     position: relative;
     width: 300px;
-    height: 380px; /* Increased height so the boxer's head doesn't hit the top */
+    height: 380px; 
     flex-shrink: 0;
-    perspective: 1000px; /* Gives the tilt real depth */
+    perspective: 1000px; 
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -294,21 +294,24 @@ body.light-mode .dumbbell-icon {
 
 .circle-bg {
     position: absolute;
-    bottom: 20px; /* Lifted up slightly */
+    bottom: 20px;
     left: 50%;
+    /* EXACT 60 DEGREE TILT */
     transform: translateX(-50%) rotateX(60deg); 
     width: 320px;
     height: 320px;
     background: radial-gradient(circle, var(--accent) 0%, #000 80%);
     border-radius: 50%;
-    border: 6px solid var(--accent); /* Slightly thicker for better rim look */
+    border: 6px solid var(--accent);
     box-shadow: 0 10px 40px var(--accent-glow);
     z-index: 1;
+    /* ENSURES BORDER IS INSIDE THE 320px */
+    box-sizing: border-box; 
 }
 
 .out-of-bounds-img {
     position: absolute;
-    bottom: 35px; /* Sits 'inside' the 3D hole between the front and back rim */
+    bottom: 30px; /* SITS SLIGHTLY HIGHER SO FEET ARE 'INSIDE' THE RIM */
     left: 50%;
     transform: translateX(-50%) scale(1.3);
     width: 100%;
@@ -321,17 +324,19 @@ body.light-mode .dumbbell-icon {
 
 .circle-front-rim {
     position: absolute;
-    bottom: 20px; /* Matches circle-bg EXACTLY */
+    bottom: 20px; /* MATCHES circle-bg */
     left: 50%;
-    transform: translateX(-50%) rotateX(60deg); /* Matches rotation EXACTLY */
-    width: 320px;
-    height: 162px; /* Half height + 2px to ensure it covers the middle seam */
+    /* MATCHES circle-bg ROTATION */
+    transform: translateX(-50%) rotateX(60deg); 
+    width: 320px; /* MATCHES circle-bg WIDTH */
+    height: 160px; /* EXACTLY HALF OF 320px */
     border-radius: 0 0 160px 160px;
     border: 6px solid var(--accent);
-    border-top: none;
+    border-top: none; /* KEEPS TOP OPEN */
     background: transparent;
     z-index: 10; 
     pointer-events: none;
+    box-sizing: border-box; /* MATCHES circle-bg BOX MODEL */
 }
 
 /* Hover Effect: The "Punch" out of the frame */
