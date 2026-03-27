@@ -191,13 +191,47 @@ body.light-mode .dumbbell-icon {
     backdrop-filter: var(--blur);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 20px;
-    transition: all 0.6s ease;
+    padding: 25px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    user-select: none;
 }
 
-.plan-card.active-card { transform: translateZ(200px); z-index: 10; opacity: 1; }
-.plan-card.left-card { transform: translateX(-350px) rotateY(35deg); opacity: 0.5; }
-.plan-card.right-card { transform: translateX(350px) rotateY(-35deg); opacity: 0.5; }
+/* 5-CARD 3D DEPTH MAP */
+.plan-card.active-card { 
+    transform: translateZ(250px); 
+    z-index: 100; 
+    opacity: 1; 
+}
+
+.plan-card.left-card { 
+    transform: translateX(-320px) translateZ(50px) rotateY(30deg); 
+    z-index: 50; 
+    opacity: 0.7; 
+}
+
+.plan-card.right-card { 
+    transform: translateX(320px) translateZ(50px) rotateY(-30deg); 
+    z-index: 50; 
+    opacity: 0.7; 
+}
+
+.plan-card.far-left { 
+    transform: translateX(-580px) translateZ(-150px) rotateY(45deg); 
+    z-index: 10; 
+    opacity: 0.3; 
+    filter: blur(2px);
+}
+
+.plan-card.far-right { 
+    transform: translateX(580px) translateZ(-150px) rotateY(-45deg); 
+    z-index: 10; 
+    opacity: 0.3; 
+    filter: blur(2px);
+}
 
 @keyframes blink { 50% { opacity: 0; } }
 
