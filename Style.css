@@ -615,10 +615,24 @@ body.light-mode .dumbbell-icon {
     }
     
     .boxer-speech-bubble {
-        margin-left: 0;         /* Cancels the 80px PC margin */
-        margin-top: 10px;       /* Small gap under the boxer */
-        width: 90%;             /* Fits inside the phone screen width */
-        max-width: 400px;
+    margin-left: 0;
+    margin-top: 20px;
+    
+    /* 1. The "Box" Size: 85% of screen width keeps it from touching the phone edges */
+    width: 85vw; 
+    max-width: 450px;
+    
+    /* 2. The "Tucked" Fix: Padding creates space between the text and the border */
+    padding: 20px 25px; 
+    
+    /* 3. The "Edges" Look: Stronger border and shadow to make the box pop */
+    border: 2px solid var(--border); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    
+    /* 4. Keeps the box centered */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     }
     
     .boxer-container {
