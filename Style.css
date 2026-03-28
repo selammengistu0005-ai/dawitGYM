@@ -534,3 +534,77 @@ body.light-mode .dumbbell-icon {
     transform: scale(1.15) translateY(-5px);
     box-shadow: 0 15px 30px rgba(36, 161, 222, 0.5);
 }
+
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+    :root {
+        --p-size: 120px; /* Smaller logo for mobile screens */
+    }
+
+    /* 1. Reset Hero Spacer */
+    .hero-spacer {
+        height: 50vh;
+        margin-bottom: 20px;
+    }
+
+    /* 2. Fix Overlapping Profile */
+    .profile-wrapper {
+        top: 60px;
+        gap: 15px;
+        width: 90%;
+    }
+
+    #typing-container {
+        font-size: 1.2rem;
+        min-height: 3em; /* More space for wrapped Amharic text */
+    }
+
+    /* 3. PERFORMANCE FIX: Simplify 3D Carousel */
+    .carousel-container {
+        perspective: 800px; /* Reduced for better performance */
+        padding: 50px 0;
+        min-height: 400px;
+    }
+
+    .plan-card {
+        width: 260px; /* Narrower cards for portrait mode */
+        height: 380px;
+        backdrop-filter: none; /* Disable blur on mobile to save GPU */
+        background: rgba(30, 41, 59, 0.95); /* Solid backup */
+    }
+
+    /* Tighter 3D Stacking (Prevents horizontal overflow) */
+    .plan-card.active-card { transform: translateZ(150px); }
+    
+    .plan-card.left-card { 
+        transform: translateX(-120px) translateZ(0px) rotateY(25deg) scale(0.8); 
+    }
+    .plan-card.right-card { 
+        transform: translateX(120px) translateZ(0px) rotateY(-25deg) scale(0.8); 
+    }
+
+    /* Hide Far-Left/Right on small screens to boost speed */
+    .plan-card.far-left, .plan-card.far-right {
+        display: none;
+    }
+
+    /* 4. Boxer & Bio Stack */
+    .bio-wrapper {
+        flex-direction: column;
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .boxer-speech-bubble {
+        margin-left: 0;
+        margin-top: 40px;
+        max-width: 90%;
+    }
+
+    /* Shrink the Boxer Spotlight */
+    .circle-bg {
+        width: 240px;
+        height: 240px;
+    }
+}
