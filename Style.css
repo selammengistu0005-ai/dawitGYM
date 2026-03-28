@@ -200,6 +200,20 @@ body.light-mode .dumbbell-icon {
     user-select: none;
 }
 
+/* Hover Glow Effect */
+.plan-card:hover {
+    cursor: pointer;
+    border-color: rgba(200, 200, 200, 0.4); /* Light grey border */
+    box-shadow: 0 0 25px rgba(150, 150, 150, 0.2); /* Low radiant grey glow */
+    transform: inherit; /* Keeps the 3D position while hovering */
+}
+
+/* Ensure the active card keeps its focus but gets the glow */
+.plan-card.active-card:hover {
+    box-shadow: 0 0 30px rgba(150, 150, 150, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
 /* 5-CARD 3D DEPTH MAP */
 .plan-card.active-card { 
     transform: translateZ(250px); 
