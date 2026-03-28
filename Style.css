@@ -291,15 +291,17 @@ body.light-mode .dumbbell-icon {
 .face-2 { transform: rotateY(120deg) translateZ(120px); }
 .face-3 { transform: rotateY(240deg) translateZ(120px); }
 
-.blue-glow {
+/* BLUE FACE OVERRIDE */
+.circle-bg.blue-glow {
     border-color: #3b82f6;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 20%, rgba(0,0,0,0.6) 100%);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 20%, rgba(15, 23, 42, 0.8) 100%);
     box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
 }
 
-.purple-glow {
+/* PURPLE FACE OVERRIDE */
+.circle-bg.purple-glow {
     border-color: #a855f7;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 20%, rgba(0,0,0,0.6) 100%);
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 20%, rgba(15, 23, 42, 0.8) 100%);
     box-shadow: 0 0 40px rgba(168, 85, 247, 0.6);
 }
 
