@@ -163,7 +163,7 @@ body.light-mode .dumbbell-icon {
 
 .plans-carousel-section {
     width: 100%;
-    margin-top: 40px; /* Reduced from 350px to fit the title */
+    margin-top: 350px; /* Reduced from 350px to fit the title */
     position: relative;
     display: block;
 }
