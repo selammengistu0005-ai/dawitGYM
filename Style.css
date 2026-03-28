@@ -722,7 +722,7 @@ body.light-mode .dumbbell-icon {
 .follow-journey-icons a:hover {
     transform: scale(1.1);
 }
-    )
+}
 
 /* Mobile Specific Tweaks */
 @media (max-width: 480px) {
