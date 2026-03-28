@@ -722,27 +722,37 @@ body.light-mode .dumbbell-icon {
 .follow-journey-icons a:hover {
     transform: scale(1.1);
 }
+    /* 1. The Footer: Stacks text on top of the icons */
     .site-footer {
         display: flex !important;
-        flex-direction: column !important;
+        flex-direction: column !important; /* Text on top, Icons below */
         align-items: center !important;
         padding: 30px 0 !important;
+        gap: 15px !important; /* Space between the text and the icons */
     }
 
-    /* This div forces the icons to stay side-by-side */
+    .site-footer p {
+        margin: 0 !important;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.9rem;
+    }
+
+    /* 2. The Icon Row: Forces Telegram and Instagram to stay side-by-side */
     .footer-social-row {
         display: flex !important;
-        flex-direction: row !important; 
+        flex-direction: row !important; /* THIS IS THE SIDE-BY-SIDE MAGIC */
         justify-content: center !important;
-        gap: 30px !important; /* Space between them */
-        margin-top: 10px !important;
+        align-items: center !important;
+        gap: 40px !important; /* Wide gap so they don't look crowded */
+        width: 100% !important;
     }
 
-    /* Shrinking your custom CSS icons */
+    /* 3. The Icon Sizing */
     .telegram-icon, .instagram-icon {
-        width: 40px !important;  /* Shrunk from giant size */
-        height: 40px !important;
-        transform: scale(0.8) !important; /* Fine-tune the inner details */
+        width: 45px !important; 
+        height: 45px !important;
+        margin: 0 !important;
     }
 
     /* Ensuring the plane and lens stay centered inside the smaller boxes */
