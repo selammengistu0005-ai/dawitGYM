@@ -48,28 +48,36 @@ function type() {
     setTimeout(type, typeSpeed);
 } // THIS BRACKET WAS MISSING: It closes the type function
 
-// NEW: Boxer HUD Typing Function
-// NEW: Boxer HUD Typing Function with Smart Pause
 function typeBoxerBio() {
     const boxerElement = document.getElementById("boxer-typing-text");
+    const specialSentence = "አቋምህ ማንነትህ ነው!";
     
     if (boxerElement && boxerCharIndex < boxerBioText.length) {
+        // Check if we have reached the start of the final special sentence
+        if (boxerBioText.substring(boxerCharIndex).startsWith(specialSentence)) {
+            // Create a span, give it the glow class, and put the whole sentence in it
+            const glowSpan = document.createElement("span");
+            glowSpan.className = "final-glow";
+            glowSpan.textContent = specialSentence;
+            boxerElement.appendChild(glowSpan);
+            
+            // Finish the function since we just added the whole final part
+            boxerCharIndex = boxerBioText.length; 
+            return; 
+        }
+
         const currentChar = boxerBioText.charAt(boxerCharIndex);
-        boxerElement.textContent += currentChar;
+        boxerElement.innerHTML += currentChar; // Use innerHTML to allow tags
         boxerCharIndex++;
 
-        // DEFAULT SPEED: 80ms
         let nextStepDelay = 80;
-
-        // SMART PAUSE: If the character is a dot, wait longer (800ms)
         if (currentChar === ".") {
-            nextStepDelay = 800; 
+            nextStepDelay = 400; 
         }
 
         setTimeout(typeBoxerBio, nextStepDelay); 
     }
 }
-
 // 2. SCROLL-TO-DOCK LOGIC
 window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
