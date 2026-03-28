@@ -193,12 +193,12 @@ function resetBoxerTimer() {
 // Start the timer for the first time
 resetBoxerTimer();
 
-// THE "ANTI-CRAZY SPIN" LOGIC:
-// This stops the timer when you change tabs and restarts it when you come back
 document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
-        clearInterval(boxerInterval); // Stop everything while away
+        clearInterval(boxerInterval); 
+        stopCarouselAutoPlay(); // Stop carousel too
     } else {
-        resetBoxerTimer(); // Start fresh when you return
+        resetBoxerTimer(); 
+        startCarouselAutoPlay(); // Restart carousel too
     }
 });
