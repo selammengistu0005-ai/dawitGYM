@@ -484,61 +484,47 @@ body.light-mode .dumbbell-icon {
     justify-content: center;
 }
 
-/* 1. The Green Box (Outer Glow and Transitions Stay) */
-.phone-icon {
+/* 1. The Telegram Box */
+.telegram-icon {
     position: relative;
     width: 60px;
     height: 60px;
-    background: linear-gradient(45deg, #00ff88, #00bd65);
-    border-radius: 18px; /* Classic IG rounded-square look */
+    background: linear-gradient(180deg, #24A1DE 0%, #1e87bb 100%);
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+    box-shadow: 0 10px 20px rgba(36, 161, 222, 0.3);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* 2. The Main Receiver Container (Invisible holder) */
-.receiver {
+/* 2. The Paper Plane (The "Elite" CSS Triangle Method) */
+.paper-plane {
     position: relative;
-    width: 28px;
-    height: 32px;
-    transform: rotate(45deg); /* Standard dialer angle */
-    pointer-events: none;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid white; /* The main body */
+    transform: rotate(45deg) translate(-2px, -4px);
 }
 
-/* 3. The Curved Handle (Middle part) */
-.receiver::before {
+/* 3. The "Cut-out" part of the plane */
+.paper-plane::after {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 4px;           /* Thin central wire */
-    height: 22px;
-    background: white;
-    border-radius: 3px;
-    
-    /* This creates the realistic "inward" curve of the handle */
-    box-shadow: 1px 0 0 white, 2px 0 0 white, 3px 0 0 white; /* Fakes the curve */
+    top: 10px;
+    left: -15px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid #24A1DE; /* Matches background to "cut" the shape */
+    transform: scale(0.8);
 }
 
-/* 4. The Earpiece (Top Bell) */
-.receiver::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 14px;         /* Wide part of the bell */
-    height: 14px;
-    background: white;
-    border-radius: 50%;  /* Makes the bottom bell-shaped */
-    
-    /* Adds the upper "bell" cap for depth */
-    box-shadow: 0 -4px 0 white;
-}
-
-/* 5. The Mouthpiece (Bottom Bell) */
-.receiver .mouthpiece { /* Use this class if you have it, but for a minimalist approach, we use pseudo-elements only */
-    display: none; /* If you add this HTML, hide the pseudo-element for now to prevent double-ups */
+/* 4. Hover Effect */
+.telegram-link:hover .telegram-icon {
+    transform: scale(1.15) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(36, 161, 222, 0.5);
 }
