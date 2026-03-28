@@ -106,4 +106,25 @@ cards.forEach((card) => {
 document.addEventListener("DOMContentLoaded", () => {
     type();          // Starts your Amharic name typing
     typeBoxerBio();  // Starts the Boxer's HUD typing
-});
+});;
+
+// 5. AUTOMATIC BOXER ROTATION
+let currentBoxerAngle = 0;
+let boxerInterval = setInterval(rotateBoxer, 3000); // Store the timer here
+
+function rotateBoxer() {
+    currentBoxerAngle -= 120; 
+    const prism = document.getElementById('boxer-prism');
+    if (prism) {
+        prism.style.transform = `rotateY(${currentBoxerAngle}deg)`;
+    }
+    
+    // RESET THE TIMER:
+    // This clears the 3-second wait and starts it fresh every time a rotation happens
+    // (whether it was automatic or a manual click)
+    clearInterval(boxerInterval);
+    boxerInterval = setInterval(rotateBoxer, 3000);
+}
+
+// Set the interval to 3000ms (3 seconds)
+setInterval(rotateBoxer, 3000);
