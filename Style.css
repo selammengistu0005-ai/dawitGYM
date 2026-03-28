@@ -629,32 +629,46 @@ body.light-mode .dumbbell-icon {
         padding: 0 20px;
     }
 
-    /* Inside your mobile media query */
-    .boxer-container {
-        height: 380px;      /* Increased from your current height to show his waist */
-        margin-bottom: 0;   /* Removes any overlapping pull */
-        position: relative;
-        display: flex;
-        justify-content: center;
-    }
-    
-    .out-of-bounds-img {
-        transform: scale(1.1) translateY(0); /* Centers him on the 'stage' */
-        bottom: 0;
-    }
+    /* 1. Shrink the 3D "Stage" so it fits the phone width */
+/* --- CORRECTED BOXER MOBILE SECTION --- */
 
-    .circle-bg {
-        width: 220px;
-        height: 220px;
-    }
+/* 1. Shrink the Stage */
+.boxer-container {
+    width: 260px;
+    height: 380px; /* Increased to fix the "severed" waist issue */
+    perspective: 800px;
+    margin: 0 auto;
+}
 
-    /* Inside your mobile media query */
-    
-    .boxer-speech-bubble {
-        margin-top: -10px;    /* Slight overlap for a 3D 'stepping out' look */
-        width: 90vw;          /* Wider for a more stable look on phones */
-        padding: 30px 20px;   /* MORE padding on top/bottom, LESS on sides */
-        border-radius: 20px;  /* Smoother corners for a premium feel */
-        z-index: 10;          /* Ensures it stays in front of the green circle */
-    }
+/* 2. Scale the flipping part (Matches your PC name: .boxer-inner) */
+.boxer-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 3. The Flip Trigger (deg instead of px) */
+.boxer-container:hover .boxer-inner,
+.boxer-container:active .boxer-inner {
+    transform: rotateY(180deg);
+}
+
+/* 4. The Out-of-Bounds Image */
+.out-of-bounds-img {
+    width: 90%;
+    height: auto;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* 5. The Speech Bubble fix */
+.boxer-speech-bubble {
+    margin: 20px auto 0 auto !important; /* Forces centering and spacing */
+    width: 88vw;
+    padding: 30px 20px;
+    box-sizing: border-box; 
+    z-index: 10;
+}
 }
