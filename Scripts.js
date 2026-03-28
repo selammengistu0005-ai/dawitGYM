@@ -53,26 +53,31 @@ function typeBoxerBio() {
     const specialSentence = "አቋምህ ማንነትህ ነው!";
     
     if (boxerElement && boxerCharIndex < boxerBioText.length) {
-        // Check if we have reached the start of the final special sentence
+        
+        // CHECK: Is it time for the special glowing line?
         if (boxerBioText.substring(boxerCharIndex).startsWith(specialSentence)) {
-            // Create a span, give it the glow class, and put the whole sentence in it
+            
+            // 1. Add a line break so it starts on a new line
+            boxerElement.appendChild(document.createElement("br"));
+            boxerElement.appendChild(document.createElement("br")); // Second one for extra spacing
+
+            // 2. Create the glowing span
             const glowSpan = document.createElement("span");
             glowSpan.className = "final-glow";
             glowSpan.textContent = specialSentence;
             boxerElement.appendChild(glowSpan);
             
-            // Finish the function since we just added the whole final part
             boxerCharIndex = boxerBioText.length; 
             return; 
         }
 
         const currentChar = boxerBioText.charAt(boxerCharIndex);
-        boxerElement.innerHTML += currentChar; // Use innerHTML to allow tags
+        boxerElement.innerHTML += currentChar; 
         boxerCharIndex++;
 
         let nextStepDelay = 80;
         if (currentChar === ".") {
-            nextStepDelay = 400; 
+            nextStepDelay = 100; 
         }
 
         setTimeout(typeBoxerBio, nextStepDelay); 
