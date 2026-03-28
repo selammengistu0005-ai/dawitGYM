@@ -484,31 +484,61 @@ body.light-mode .dumbbell-icon {
     justify-content: center;
 }
 
+/* 1. The Green Box (Outer Glow and Transitions Stay) */
 .phone-icon {
     position: relative;
     width: 60px;
     height: 60px;
     background: linear-gradient(45deg, #00ff88, #00bd65);
-    border-radius: 18px;
+    border-radius: 18px; /* Classic IG rounded-square look */
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    margin-right: 20px; /* Space between Phone and Instagram */
 }
 
+/* 2. The Main Receiver Container (Invisible holder) */
 .receiver {
-    width: 25px;
-    height: 12px;
-    background: white;
-    border-radius: 4px;
     position: relative;
-    transform: rotate(-45deg); /* Tilts the phone handle */
+    width: 28px;
+    height: 32px;
+    transform: rotate(45deg); /* Standard dialer angle */
+    pointer-events: none;
 }
 
-/* Hover effect to match Instagram */
-.phone-link:hover .phone-icon {
-    transform: scale(1.15) rotate(-5deg);
-    box-shadow: 0 15px 30px rgba(0, 255, 136, 0.4);
+/* 3. The Curved Handle (Middle part) */
+.receiver::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;           /* Thin central wire */
+    height: 22px;
+    background: white;
+    border-radius: 3px;
+    
+    /* This creates the realistic "inward" curve of the handle */
+    box-shadow: 1px 0 0 white, 2px 0 0 white, 3px 0 0 white; /* Fakes the curve */
+}
+
+/* 4. The Earpiece (Top Bell) */
+.receiver::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14px;         /* Wide part of the bell */
+    height: 14px;
+    background: white;
+    border-radius: 50%;  /* Makes the bottom bell-shaped */
+    
+    /* Adds the upper "bell" cap for depth */
+    box-shadow: 0 -4px 0 white;
+}
+
+/* 5. The Mouthpiece (Bottom Bell) */
+.receiver .mouthpiece { /* Use this class if you have it, but for a minimalist approach, we use pseudo-elements only */
+    display: none; /* If you add this HTML, hide the pseudo-element for now to prevent double-ups */
 }
