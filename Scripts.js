@@ -54,7 +54,7 @@ function typeBoxerBio() {
     if (boxerElement && boxerCharIndex < boxerBioText.length) {
         boxerElement.textContent += boxerBioText.charAt(boxerCharIndex);
         boxerCharIndex++;
-        setTimeout(typeBoxerBio, 40); 
+        setTimeout(typeBoxerBio, 80); 
     }
 }
 
