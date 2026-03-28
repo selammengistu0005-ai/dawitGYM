@@ -98,10 +98,14 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// 3. THEME TOGGLE
-function toggleTheme() {
-    document.body.classList.toggle("light-mode");
-    console.log("Theme toggled. Light mode is now:", document.body.classList.contains("light-mode"));
+// 1. Find the dumbbell element
+const themeBtn = document.querySelector('.theme-toggle');
+
+// 2. Tell it what to do when clicked
+if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+        toggleTheme(); // This calls your existing function
+    });
 }
 
 // 4. 3D CAROUSEL ROTATION LOGIC
