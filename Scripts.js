@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 5. AUTOMATIC BOXER ROTATION
 let currentBoxerAngle = 0;
-let boxerInterval = setInterval(rotateBoxer, 3000); // Store the timer here
+let boxerInterval;
 
 function rotateBoxer() {
     currentBoxerAngle -= 120; 
@@ -119,12 +119,27 @@ function rotateBoxer() {
         prism.style.transform = `rotateY(${currentBoxerAngle}deg)`;
     }
     
-    // RESET THE TIMER:
-    // This clears the 3-second wait and starts it fresh every time a rotation happens
-    // (whether it was automatic or a manual click)
-    clearInterval(boxerInterval);
-    boxerInterval = setInterval(rotateBoxer, 3000);
+    // Reset the timer so manual clicks don't double-up
+    resetBoxerTimer();
 }
 
-// Set the interval to 3000ms (3 seconds)
-setInterval(rotateBoxer, 3000);
+function resetBoxerTimer() {
+    clearInterval(boxerInterval);
+    // Only start the timer if the user is actually looking at the page
+    if (!document.hidden) {
+        boxerInterval = setInterval(rotateBoxer, 3000);
+    }
+}
+
+// Start the timer for the first time
+resetBoxerTimer();
+
+// THE "ANTI-CRAZY SPIN" LOGIC:
+// This stops the timer when you change tabs and restarts it when you come back
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        clearInterval(boxerInterval); // Stop everything while away
+    } else {
+        resetBoxerTimer(); // Start fresh when you return
+    }
+});
