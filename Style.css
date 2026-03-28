@@ -699,4 +699,37 @@ body.light-mode .dumbbell-icon {
 .face-1 { transform: rotateY(0deg) translateZ(100px) !important; }
 .face-2 { transform: rotateY(120deg) translateZ(100px) !important; }
 .face-3 { transform: rotateY(240deg) translateZ(100px) !important; }
+
+    /* Container for the icons */
+.follow-journey-icons {
+    display: flex;
+    flex-direction: row; /* Forces them side-by-side */
+    justify-content: center; /* Centers them under the text */
+    gap: 20px; /* Space between the two icons */
+    margin-top: 15px;
+}
+
+/* Making the icons smaller and responsive */
+.follow-journey-icons a img, 
+.follow-journey-icons a i {
+    width: 35px;  /* Adjust size as needed */
+    height: 35px;
+    font-size: 30px; /* If using FontAwesome icons */
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for a professional touch */
+.follow-journey-icons a:hover {
+    transform: scale(1.1);
+}
+    )
+
+/* Mobile Specific Tweaks */
+@media (max-width: 480px) {
+    .follow-journey-icons {
+        gap: 15px; /* Slightly tighter gap on very small phones */
+    }
+    .follow-journey-icons a img {
+        width: 30px; /* Even smaller for tiny screens */
+    }
 }
