@@ -1,6 +1,6 @@
 // 1. TYPING EFFECT LOGIC
 // NEW: Boxer Typing Data
-const boxerBioText = "Every punch is a calculation. Every movement is physics in motion. I don't just train bodies; I engineer champions.";
+const boxerBioText = "ሰላም! ስሜ ዳዊት ይባላል.... በዚህ በስፖርቱና በሰውነት ግንባታው ዓለም ውስጥ ከአሥራ ሦስት ዓመታት በላይ በመቆየት ሰፊ ልምድን አካብቻለሁ። በነዚህ ዓመታት ውስጥ የበርካታ ሰዎችን የጤና እና የሰውነት አቋም ግብ ለማሳካት የማሰልጠንና የማማከር ዕድል ነበረኝ ከነዚህም መካከል ከብዙ ታዋቂ የአገራችን አርቲስቶች ጋር አብሬ በመሥራት የሚፈለገውን የአካል ለውጥ ማምጣት ችያለሁ። የትኛውንም ዓይነት የአካል ብቃት ደረጃ ላይ ብትሆን፣ ያንተን ፍላጎትና የሰውነት ሁኔታ መሠረት ያደረገ፣ ውጤታማና የጤና ጥንቃቄን የተከተለ ሥልጠና ለመስጠት ዝግጁ ነኝ። ከእኔ ጋር በመሥራት ለውጥ ማምጣት ለምትፈልጉ ሁሉ በሩ ክፍት ነው።";
 let boxerCharIndex = 0;
 let typingText; 
 const phrases = [
