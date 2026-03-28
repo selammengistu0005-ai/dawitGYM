@@ -576,15 +576,15 @@ body.light-mode .dumbbell-icon {
     }
 
     /* 2. Fit 3D Cards to Phone Screen */
-    .carousel-container {
-        perspective: 1000px;
-        min-height: 450px;
-    }
-
+   .carousel-container {
+    perspective: 800px; /* Reduced depth for phone screens */
+    min-height: 400px;
+   }
+    
     .plan-card {
-        width: 75vw; /* 75% of screen width */
-        height: 380px;
-        background: rgba(30, 41, 59, 0.9); /* Solid for performance */
+        width: 65vw;  /* Cards now take up only 65% of the screen width */
+        height: 340px; /* Shorter height so it doesn't overlap the title */
+        padding: 15px;
     }
 
     /* Tighter 3D Stacking for small screens */
