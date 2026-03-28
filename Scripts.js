@@ -51,42 +51,24 @@ function type() {
 function typeBoxerBio() {
     const boxerElement = document.getElementById("boxer-typing-text");
     const specialSentence = "አቋምህ ማንነትህ ነው!";
-    
-    if (boxerElement && boxerCharIndex < boxerBioText.length) {
-        
-        // 1. CHECK: Are we currently typing the special glowing line?
-        // We calculate if the current index has passed the main text and is now in the "Slogan" zone
-        const mainTextLength = boxerBioText.length - specialSentence.length;
+    const mainTextLength = boxerBioText.length - specialSentence.length;
 
-        if (boxerCharIndex >= mainTextLength) {
-            // If it's the very first character of the special line, add the line breaks
-            if (boxerCharIndex === mainTextLength) {
-                boxerElement.appendChild(document.createElement("br"));
-                boxerElement.appendChild(document.createElement("br"));
-            }
+    if (!boxerElement || boxerCharIndex >= boxerBioText.length) return;
 
-            // Create a temporary span for JUST this one character
-            const charSpan = document.createElement("span");
-            charSpan.className = "final-glow";
-            charSpan.textContent = boxerBioText.charAt(boxerCharIndex);
-            boxerElement.appendChild(charSpan);
-            
-            boxerCharIndex++;
-            setTimeout(typeBoxerBio, 120); // Slower typing for the dramatic finish
-            return; 
+    if (boxerCharIndex >= mainTextLength) {
+        if (boxerCharIndex === mainTextLength) {
+            boxerElement.innerHTML += "<br><br>"; // Using innerHTML consistently
         }
-
-        // 2. DEFAULT TYPING (for the main body text)
-        const currentChar = boxerBioText.charAt(boxerCharIndex);
-        boxerElement.innerHTML += currentChar; 
+        const char = boxerBioText.charAt(boxerCharIndex);
+        boxerElement.innerHTML += `<span class="final-glow">${char}</span>`;
         boxerCharIndex++;
-
-        let nextStepDelay = 80;
-        if (currentChar === ".") {
-            nextStepDelay = 300; // Nice pause at dots
-        }
-
-        setTimeout(typeBoxerBio, nextStepDelay); 
+        setTimeout(typeBoxerBio, 120);
+    } else {
+        const currentChar = boxerBioText.charAt(boxerCharIndex);
+        boxerElement.innerHTML += currentChar;
+        boxerCharIndex++;
+        let nextStepDelay = (currentChar === ".") ? 300 : 80;
+        setTimeout(typeBoxerBio, nextStepDelay);
     }
 }
 // 2. SCROLL-TO-DOCK LOGIC
@@ -168,3 +150,16 @@ document.addEventListener("DOMContentLoaded", () => {
         track.addEventListener('mouseleave', startCarouselAutoPlay);
     }
 });
+
+let boxerRotation = 0;
+const boxerPrism = document.querySelector('.boxer-inner');
+
+function autoFlipBoxer() {
+    boxerRotation -= 120; // 360 / 3 faces = 120 degrees
+    if (boxerPrism) {
+        boxerPrism.style.transform = `rotateY(${boxerRotation}deg)`;
+    }
+}
+
+// Start the 3-second auto-flip
+setInterval(autoFlipBoxer, 3000);
