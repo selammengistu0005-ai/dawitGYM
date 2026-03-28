@@ -581,16 +581,27 @@ body.light-mode .dumbbell-icon {
     min-height: 400px;
    }
     
+    /* Inside your @media query */
+    
     .plan-card {
-        width: 65vw;  /* Cards now take up only 65% of the screen width */
-        height: 340px; /* Shorter height so it doesn't overlap the title */
-        padding: 15px;
+        width: 55vw;   /* Dropped from 65vw to 55vw for a slim look */
+        height: 300px;  /* Shorter height to keep the screen clean */
+        padding: 12px;
+        font-size: 0.85rem; /* Smaller text so it fits the new card size */
     }
 
-    /* Tighter 3D Stacking for small screens */
-    .plan-card.active-card { transform: translateZ(120px); }
-    .plan-card.left-card { transform: translateX(-90px) translateZ(-20px) rotateY(25deg) scale(0.85); }
-    .plan-card.right-card { transform: translateX(90px) translateZ(-20px) rotateY(-25deg) scale(0.85); }
+    .plan-card.active-card { 
+        transform: translateZ(80px); 
+    }
+    /* Pulled the side cards closer to center so they don't hit the screen edges */
+    
+    .plan-card.left-card { 
+        transform: translateX(-65px) translateZ(-60px) rotateY(15deg) scale(0.75); 
+    }
+
+.plan-card.right-card { 
+    transform: translateX(65px) translateZ(-60px) rotateY(-15deg) scale(0.75); 
+}
     
     .plan-card.far-left, .plan-card.far-right {
         opacity: 0;
