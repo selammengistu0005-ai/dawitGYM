@@ -54,30 +54,36 @@ function typeBoxerBio() {
     
     if (boxerElement && boxerCharIndex < boxerBioText.length) {
         
-        // CHECK: Is it time for the special glowing line?
-        if (boxerBioText.substring(boxerCharIndex).startsWith(specialSentence)) {
-            
-            // 1. Add a line break so it starts on a new line
-            boxerElement.appendChild(document.createElement("br"));
-            boxerElement.appendChild(document.createElement("br")); // Second one for extra spacing
+        // 1. CHECK: Are we currently typing the special glowing line?
+        // We calculate if the current index has passed the main text and is now in the "Slogan" zone
+        const mainTextLength = boxerBioText.length - specialSentence.length;
 
-            // 2. Create the glowing span
-            const glowSpan = document.createElement("span");
-            glowSpan.className = "final-glow";
-            glowSpan.textContent = specialSentence;
-            boxerElement.appendChild(glowSpan);
+        if (boxerCharIndex >= mainTextLength) {
+            // If it's the very first character of the special line, add the line breaks
+            if (boxerCharIndex === mainTextLength) {
+                boxerElement.appendChild(document.createElement("br"));
+                boxerElement.appendChild(document.createElement("br"));
+            }
+
+            // Create a temporary span for JUST this one character
+            const charSpan = document.createElement("span");
+            charSpan.className = "final-glow";
+            charSpan.textContent = boxerBioText.charAt(boxerCharIndex);
+            boxerElement.appendChild(charSpan);
             
-            boxerCharIndex = boxerBioText.length; 
+            boxerCharIndex++;
+            setTimeout(typeBoxerBio, 120); // Slower typing for the dramatic finish
             return; 
         }
 
+        // 2. DEFAULT TYPING (for the main body text)
         const currentChar = boxerBioText.charAt(boxerCharIndex);
         boxerElement.innerHTML += currentChar; 
         boxerCharIndex++;
 
         let nextStepDelay = 80;
         if (currentChar === ".") {
-            nextStepDelay = 100; 
+            nextStepDelay = 300; // Nice pause at dots
         }
 
         setTimeout(typeBoxerBio, nextStepDelay); 
