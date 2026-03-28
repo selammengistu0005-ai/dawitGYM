@@ -433,3 +433,30 @@ body.light-mode .dumbbell-icon {
     transform: scale(1.15) rotate(5deg);
     box-shadow: 0 15px 30px rgba(214, 36, 159, 0.5);
 }
+
+/* Centering the Blog Section */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;           /* Space between lines and text */
+    width: 100%;         /* Spans full container width */
+    margin: 60px 0;      /* Space above and below the divider */
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 15px; /* Cinematic spacing */
+    color: var(--text);
+    text-transform: uppercase;
+    text-shadow: 0 0 15px var(--accent-glow);
+    margin: 0;           /* Removes default h2 margins */
+}
+
+.divider-line {
+    flex-grow: 1;        /* Makes lines fill the remaining space */
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+}
