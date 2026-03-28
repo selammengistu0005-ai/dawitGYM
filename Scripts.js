@@ -49,12 +49,24 @@ function type() {
 } // THIS BRACKET WAS MISSING: It closes the type function
 
 // NEW: Boxer HUD Typing Function
+// NEW: Boxer HUD Typing Function with Smart Pause
 function typeBoxerBio() {
     const boxerElement = document.getElementById("boxer-typing-text");
+    
     if (boxerElement && boxerCharIndex < boxerBioText.length) {
-        boxerElement.textContent += boxerBioText.charAt(boxerCharIndex);
+        const currentChar = boxerBioText.charAt(boxerCharIndex);
+        boxerElement.textContent += currentChar;
         boxerCharIndex++;
-        setTimeout(typeBoxerBio, 80); 
+
+        // DEFAULT SPEED: 80ms
+        let nextStepDelay = 80;
+
+        // SMART PAUSE: If the character is a dot, wait longer (800ms)
+        if (currentChar === ".") {
+            nextStepDelay = 800; 
+        }
+
+        setTimeout(typeBoxerBio, nextStepDelay); 
     }
 }
 
