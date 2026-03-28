@@ -598,16 +598,33 @@ body.light-mode .dumbbell-icon {
     .plan-card.left-card { 
         transform: translateX(-65px) translateZ(-60px) rotateY(15deg) scale(0.75); 
     }
-
-.plan-card.right-card { 
-    transform: translateX(65px) translateZ(-60px) rotateY(-15deg) scale(0.75); 
-}
+    
+    .plan-card.right-card { 
+        transform: translateX(65px) translateZ(-60px) rotateY(-15deg) scale(0.75); 
+    }
     
     .plan-card.far-left, .plan-card.far-right {
         opacity: 0;
         visibility: hidden; /* Fades out instead of snapping off */
     }
-
+    
+    .bio-section {
+        flex-direction: column; 
+        align-items: center;    /* Centers the boxer and bubble horizontally */
+        gap: 20px;              /* Space between the boxer and the bubble */
+    }
+    
+    .boxer-speech-bubble {
+        margin-left: 0;         /* Cancels the 80px PC margin */
+        margin-top: 10px;       /* Small gap under the boxer */
+        width: 90%;             /* Fits inside the phone screen width */
+        max-width: 400px;
+    }
+    
+    .boxer-container {
+        margin: 0 auto;         /* Forces the 3D stage to the center */
+    }
+    
     /* 3. Boxer Prism scaling */
     .bio-wrapper {
         flex-direction: column;
