@@ -661,11 +661,20 @@ body.light-mode .dumbbell-icon {
 
 /* 5. The Speech Bubble fix */
 .boxer-speech-bubble {
-    margin: 20px auto 0 auto !important; /* Forces centering and spacing */
-    width: 88vw;
-    padding: 30px 20px;
-    box-sizing: border-box; 
-    z-index: 10;
+    /* 1. Force equal internal spacing */
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    
+    /* 2. Center the text alignment */
+    text-align: center; 
+    
+    /* 3. Ensure the container itself has no 'ghost' push */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    
+    /* 4. Fix Amharic line-breaking */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
     /* Inside your @media (max-width: 768px) block */
