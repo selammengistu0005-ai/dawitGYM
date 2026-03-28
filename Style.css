@@ -670,12 +670,23 @@ body.light-mode .dumbbell-icon {
 
     /* Inside your @media (max-width: 768px) block */
 
-.circle-bg {
-    width: 210px !important;  /* Shrunk from 300px to fit the smaller boxer */
-    height: 210px !important; /* Must be the same to stay a perfect circle */
-    top: 50%;                 /* Keeps it centered vertically */
-    left: 50%;                /* Keeps it centered horizontally */
-    transform: translate(-50%, -50%); /* The 'magic' centering formula */
-    border-width: 3px;        /* Slightly thinner line for a cleaner phone look */
+/* 1. Shrink the invisible 3D faces so the circle has to fit inside them */
+.boxer-face {
+    width: 260px !important;  /* Matches your new container width */
+    height: 350px !important;
 }
+
+/* 2. Shrink the Green Circle to fit the new face size */
+.circle-bg {
+    width: 200px !important;   /* Small enough to stay behind his shoulders */
+    height: 200px !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important; /* Locks it to the center */
+}
+
+/* 3. Adjust the 3D depth so the flip stays tight */
+.face-1 { transform: rotateY(0deg) translateZ(100px) !important; }
+.face-2 { transform: rotateY(120deg) translateZ(100px) !important; }
+.face-3 { transform: rotateY(240deg) translateZ(100px) !important; }
 }
