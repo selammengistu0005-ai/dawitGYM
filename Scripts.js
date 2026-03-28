@@ -120,14 +120,16 @@ function updateCarousel() {
 // Click to Rotate (Updated Logic)
 cards.forEach((card) => {
     card.addEventListener('click', () => {
-        // Find out which position this card currently has
-        const currentClass = card.classList[1]; // Gets the second class (e.g., 'active-card')
+        const currentClass = card.classList[1]; 
 
+        // Clicking Left now pulls the carousel to the Right
         if (currentClass === 'left-card' || currentClass === 'far-left') {
-            cardClasses.unshift(cardClasses.pop());
-            updateCarousel();
-        } else if (currentClass === 'right-card' || currentClass === 'far-right') {
             cardClasses.push(cardClasses.shift());
+            updateCarousel();
+        } 
+        // Clicking Right now pulls the carousel to the Left
+        else if (currentClass === 'right-card' || currentClass === 'far-right') {
+            cardClasses.unshift(cardClasses.pop());
             updateCarousel();
         }
     });
