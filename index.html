@@ -35,12 +35,25 @@
     <main class="content-wrapper">
         <div class="bio-wrapper"> 
     <section class="bio-section">
-        <div class="boxer-container">
-            <div class="circle-bg"></div> 
-            <img src="https://raw.githubusercontent.com/selammengistu0005-ai/dawitGYM/main/SOL_3496-removebg-preview.png" 
-                 alt="Elite Boxer Pop Out" 
-                 class="out-of-bounds-img">
-        </div> <div class="boxer-speech-bubble">
+        <div class="boxer-container" onclick="rotateBoxer()">
+            <div id="boxer-prism" class="boxer-inner">
+                <div class="boxer-face face-1">
+                    <div class="circle-bg"></div> 
+                    <img src="https://raw.githubusercontent.com/selammengistu0005-ai/dawitGYM/main/SOL_3496-removebg-preview.png" class="out-of-bounds-img">
+                </div>
+        
+                <div class="boxer-face face-2">
+                    <div class="circle-bg blue-glow"></div> 
+                    <img src="https://raw.githubusercontent.com/selammengistu0005-ai/dawitGYM/main/image_of_outbound.png" class="out-of-bounds-img">
+                </div>
+        
+                <div class="boxer-face face-3">
+                    <div class="circle-bg purple-glow"></div> 
+                    <img src="https://raw.githubusercontent.com/selammengistu0005-ai/dawitGYM/main/image_of_out_bound_2.png" class="out-of-bounds-img">
+                </div>
+            </div>
+        </div> 
+        <div class="boxer-speech-bubble">
             <h2 class="bio-title">THE SCIENCE OF STRENGTH</h2>
             <p id="boxer-typing-text" class="bio-text"></p>
         </div>
