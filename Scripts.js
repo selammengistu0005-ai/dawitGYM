@@ -131,24 +131,36 @@ function toggleTheme() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    type();
-    typeBoxerBio();
+    // 1. Start the header typing immediately
+    type(); 
+
+    // 2. Setup the carousel
     updateCarousel(); 
-    
+    startCarouselAutoPlay();
+
+    // 3. Theme Toggle setup
     const themeBtn = document.querySelector('.theme-toggle');
     if (themeBtn) {
         themeBtn.addEventListener('click', toggleTheme);
     }
 
-    // NEW: Start the 3-second movement
-    startCarouselAutoPlay();
-
-    // NEW: Stop movement when hovering
+    // 4. Carousel Hover logic
     const track = document.querySelector('.carousel-track');
     if (track) {
         track.addEventListener('mouseenter', stopCarouselAutoPlay);
         track.addEventListener('mouseleave', startCarouselAutoPlay);
     }
+
+    // 5. THE OBSERVER (This replaces the direct typeBoxerBio call)
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            typeBoxerBio();
+            observer.disconnect(); 
+        }
+    }, { threshold: 0.3 });
+
+    const target = document.getElementById("boxer-typing-text");
+    if (target) observer.observe(target);
 });
 
 let boxerRotation = 0;
