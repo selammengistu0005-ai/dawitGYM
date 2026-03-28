@@ -176,3 +176,9 @@ document.addEventListener("visibilitychange", () => {
         resetBoxerTimer(); // Start fresh when you return
     }
 });
+
+// Add this at the end of your Scripts.js
+document.querySelector('.phone-link').addEventListener('click', function() {
+    console.log("Initiating call...");
+    // You could add a small toast notification here if you wanted!
+});
