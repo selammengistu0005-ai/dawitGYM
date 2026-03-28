@@ -397,13 +397,13 @@ body.light-mode .dumbbell-icon {
     opacity: 0.6;
 }
 
-/* 2. The Instagram Icon */
+/* 1. The Instagram Box (Gradient stays the same) */
 .instagram-icon {
     position: relative;
     width: 60px;
     height: 60px;
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-    border-radius: 18px; /* Classic IG rounded-square look */
+    border-radius: 16px; /* Slightly sharper for the official look */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -411,19 +411,34 @@ body.light-mode .dumbbell-icon {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* 2. The Main Camera Body (The "Rounded Square" look) */
 .camera-lens {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
+    border: 4px solid #ffffff;
+    border-radius: 10px; /* This makes it a rounded square, not a circle */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3. The Inner Circle (The actual lens) */
+.camera-lens::after {
+    content: '';
+    width: 14px;
+    height: 14px;
     border: 4px solid #ffffff;
     border-radius: 50%;
 }
 
+/* 4. The Top-Right Flash Dot */
 .viewfinder-dot {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 6px;
-    height: 6px;
+    top: 6px;   /* Moved inside the box */
+    right: 6px; /* Moved inside the box */
+    width: 5px;
+    height: 5px;
     background: #ffffff;
     border-radius: 50%;
 }
