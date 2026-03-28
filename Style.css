@@ -608,26 +608,32 @@ body.light-mode .dumbbell-icon {
         visibility: hidden; /* Fades out instead of snapping off */
     }
     
-    .bio-section {
-        flex-direction: column; 
-        align-items: center;    /* Centers the boxer and bubble horizontally */
-        gap: 20px;              /* Space between the boxer and the bubble */
-    }
-    
-    .boxer-speech-bubble {
-        margin-left: auto !important; 
-        margin-right: auto !important;
-        width: 88vw; 
-        max-width: 95%;
-        box-sizing: border-box; 
-        padding: 25px; 
-    }
-    
-    /* 3. Boxer Prism scaling */
-    .bio-wrapper {
-        flex-direction: column;
-        padding: 0 20px;
-    }
+    /* Paste this inside your @media (max-width: 768px) query */
+
+.bio-wrapper {
+    flex-direction: column !important;
+    padding-left: 0 !important;   /* Kills the 50px 'Invisible Wall' */
+    padding-right: 0 !important;
+    padding-top: 20px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.bio-section {
+    flex-direction: column !important;
+    align-items: center !important;    /* Centers children horizontally */
+    justify-content: center !important; /* Centers children vertically */
+    gap: 20px !important;
+    width: 100% !important;
+    padding: 0 !important;             /* Removes any 'ghost' padding */
+}
+
+.bio-text {
+    text-align: center !important;     /* Ensures the Amharic text itself is centered */
+    width: 100% !important;
+}
 
 .boxer-container {
     width: 260px;
@@ -660,19 +666,14 @@ body.light-mode .dumbbell-icon {
 }
 
 /* 5. The Speech Bubble fix */
+/* THE BUBBLE: Unified centering and spacing */
 .boxer-speech-bubble {
-    /* 1. Force equal internal spacing */
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    
-    /* 2. Center the text alignment */
-    text-align: center; 
-    
-    /* 3. Ensure the container itself has no 'ghost' push */
-    margin-left: auto !important;
-    margin-right: auto !important;
-    
-    /* 4. Fix Amharic line-breaking */
+    width: 88vw !important;
+    max-width: 95% !important;
+    margin: 0 auto !important; /* Perfect centering */
+    padding: 25px 20px !important; /* Symmetric spacing */
+    box-sizing: border-box !important;
+    text-align: center !important;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
