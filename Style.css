@@ -635,19 +635,24 @@ body.light-mode .dumbbell-icon {
     align-items: center;
     }
     
-    .boxer-container {
-        margin: 0 auto;         /* Forces the 3D stage to the center */
-    }
-    
     /* 3. Boxer Prism scaling */
     .bio-wrapper {
         flex-direction: column;
         padding: 0 20px;
     }
 
+    /* Inside your mobile media query */
     .boxer-container {
-        width: 240px; /* Smaller stage */
-        height: 300px;
+        height: 380px;      /* Increased from your current height to show his waist */
+        margin-bottom: 0;   /* Removes any overlapping pull */
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .out-of-bounds-img {
+        transform: scale(1.1) translateY(0); /* Centers him on the 'stage' */
+        bottom: 0;
     }
 
     .circle-bg {
@@ -655,10 +660,13 @@ body.light-mode .dumbbell-icon {
         height: 220px;
     }
 
+    /* Inside your mobile media query */
+    
     .boxer-speech-bubble {
-        margin-left: 0;
-        margin-top: -20px; /* Pulls text closer to boxer */
-        width: 95%;
-        padding: 15px;
+        margin-top: -10px;    /* Slight overlap for a 3D 'stepping out' look */
+        width: 90vw;          /* Wider for a more stable look on phones */
+        padding: 30px 20px;   /* MORE padding on top/bottom, LESS on sides */
+        border-radius: 20px;  /* Smoother corners for a premium feel */
+        z-index: 10;          /* Ensures it stays in front of the green circle */
     }
 }
