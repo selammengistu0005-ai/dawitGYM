@@ -549,71 +549,74 @@ body.light-mode .dumbbell-icon {
 /* --- MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
     :root {
-        --p-size: 120px; /* Smaller logo for mobile screens */
+        --p-size: 80px; /* Smaller profile for mobile */
     }
 
-    /* 1. Reset Hero Spacer */
-    .hero-spacer {
-        height: 50vh;
-        margin-bottom: 20px;
+    /* 1. Fix the Nav & Toggle overlapping */
+    .top-nav {
+        padding: 0 15px;
+        height: 60px;
     }
 
-    /* 2. Fix Overlapping Profile */
-    .profile-wrapper {
-        top: 60px;
-        gap: 15px;
-        width: 90%;
+    .theme-toggle {
+        right: 15px;
+        top: 15px;
+        transform: scale(0.7); /* Shrinks the dumbbell */
+    }
+
+    .scrolled .profile-wrapper {
+        left: 10px;
+        top: 10px;
+        gap: 10px;
     }
 
     #typing-container {
-        font-size: 1.2rem;
-        min-height: 3em; /* More space for wrapped Amharic text */
+        font-size: 1rem;
+        max-width: 180px; /* Prevents text from hitting the dumbbell */
     }
 
-    /* 3. PERFORMANCE FIX: Simplify 3D Carousel */
+    /* 2. Fit 3D Cards to Phone Screen */
     .carousel-container {
-        perspective: 800px; /* Reduced for better performance */
-        padding: 50px 0;
-        min-height: 400px;
+        perspective: 1000px;
+        min-height: 450px;
     }
 
     .plan-card {
-        width: 260px; /* Narrower cards for portrait mode */
+        width: 75vw; /* 75% of screen width */
         height: 380px;
-        backdrop-filter: none; /* Disable blur on mobile to save GPU */
-        background: rgba(30, 41, 59, 0.95); /* Solid backup */
+        background: rgba(30, 41, 59, 0.9); /* Solid for performance */
     }
 
-    /* Tighter 3D Stacking (Prevents horizontal overflow) */
-    .plan-card.active-card { transform: translateZ(150px); }
-    .plan-card.left-card { 
-        transform: translateX(-100px) translateZ(-50px) rotateY(20px) scale(0.7); 
-    }
-    .plan-card.right-card { 
-        transform: translateX(100px) translateZ(-50px) rotateY(-20px) scale(0.7); 
-    }
-    /* Hide Far-Left/Right on small screens to boost speed */
+    /* Tighter 3D Stacking for small screens */
+    .plan-card.active-card { transform: translateZ(120px); }
+    .plan-card.left-card { transform: translateX(-90px) translateZ(-20px) rotateY(25deg) scale(0.85); }
+    .plan-card.right-card { transform: translateX(90px) translateZ(-20px) rotateY(-25deg) scale(0.85); }
+    
     .plan-card.far-left, .plan-card.far-right {
-        display: none;
+        opacity: 0;
+        visibility: hidden; /* Fades out instead of snapping off */
     }
 
-    /* 4. Boxer & Bio Stack */
+    /* 3. Boxer Prism scaling */
     .bio-wrapper {
         flex-direction: column;
-        padding-left: 0;
-        align-items: center;
-        text-align: center;
+        padding: 0 20px;
+    }
+
+    .boxer-container {
+        width: 240px; /* Smaller stage */
+        height: 300px;
+    }
+
+    .circle-bg {
+        width: 220px;
+        height: 220px;
     }
 
     .boxer-speech-bubble {
         margin-left: 0;
-        margin-top: 40px;
-        max-width: 90%;
-    }
-
-    /* Shrink the Boxer Spotlight */
-    .circle-bg {
-        width: 240px;
-        height: 240px;
+        margin-top: -20px; /* Pulls text closer to boxer */
+        width: 95%;
+        padding: 15px;
     }
 }
