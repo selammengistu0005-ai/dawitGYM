@@ -475,3 +475,40 @@ body.light-mode .dumbbell-icon {
     height: 1px;
     background: linear-gradient(to right, transparent, var(--border), transparent);
 }
+
+
+/* Container for both icons to sit side-by-side */
+.site-footer {
+    flex-direction: row !important; /* Changes from column to row */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.phone-icon {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #00ff88, #00bd65);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-right: 20px; /* Space between Phone and Instagram */
+}
+
+.receiver {
+    width: 25px;
+    height: 12px;
+    background: white;
+    border-radius: 4px;
+    position: relative;
+    transform: rotate(-45deg); /* Tilts the phone handle */
+}
+
+/* Hover effect to match Instagram */
+.phone-link:hover .phone-icon {
+    transform: scale(1.15) rotate(-5deg);
+    box-shadow: 0 15px 30px rgba(0, 255, 136, 0.4);
+}
