@@ -129,21 +129,42 @@ cards.forEach((card) => {
     });
 });
 
+let carouselInterval;
+
+function startCarouselAutoPlay() {
+    stopCarouselAutoPlay(); // Clears any old timers to prevent double-speed
+    carouselInterval = setInterval(() => {
+        // This line pulls the last class and puts it at the front (moving them right)
+        cardClasses.unshift(cardClasses.pop());
+        updateCarousel();
+    }, 3000); // 3000ms = 3 seconds
+}
+
+function stopCarouselAutoPlay() {
+    clearInterval(carouselInterval);
+}
+
 function toggleTheme() {
     document.body.classList.toggle("light-mode");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Starts the typing effects
     type();
     typeBoxerBio();
-    
-    // 2. Positions the 3D Carousel cards correctly on start
     updateCarousel(); 
     
-    // 3. Connects the dumbbell to the theme change
     const themeBtn = document.querySelector('.theme-toggle');
     if (themeBtn) {
         themeBtn.addEventListener('click', toggleTheme);
+    }
+
+    // NEW: Start the 3-second movement
+    startCarouselAutoPlay();
+
+    // NEW: Stop movement when hovering
+    const track = document.querySelector('.carousel-track');
+    if (track) {
+        track.addEventListener('mouseenter', stopCarouselAutoPlay);
+        track.addEventListener('mouseleave', startCarouselAutoPlay);
     }
 });
