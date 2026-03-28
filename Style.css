@@ -629,10 +629,6 @@ body.light-mode .dumbbell-icon {
         padding: 0 20px;
     }
 
-    /* 1. Shrink the 3D "Stage" so it fits the phone width */
-/* --- CORRECTED BOXER MOBILE SECTION --- */
-
-/* 1. Shrink the Stage */
 .boxer-container {
     width: 260px;
     height: 380px; /* Increased to fix the "severed" waist issue */
@@ -670,5 +666,16 @@ body.light-mode .dumbbell-icon {
     padding: 30px 20px;
     box-sizing: border-box; 
     z-index: 10;
+}
+
+    /* Inside your @media (max-width: 768px) block */
+
+.circle-bg {
+    width: 210px !important;  /* Shrunk from 300px to fit the smaller boxer */
+    height: 210px !important; /* Must be the same to stay a perfect circle */
+    top: 50%;                 /* Keeps it centered vertically */
+    left: 50%;                /* Keeps it centered horizontally */
+    transform: translate(-50%, -50%); /* The 'magic' centering formula */
+    border-width: 3px;        /* Slightly thinner line for a cleaner phone look */
 }
 }
