@@ -1,4 +1,12 @@
 /* 1. THEME VARIABLES */
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    touch-action: pan-y; /* Allows vertical scrolling but kills side-shaking */
+}
+
 :root {
     --bg: #0f172a;
     --text: #f1f2f6;
@@ -578,14 +586,12 @@ body.light-mode .dumbbell-icon {
 
     /* Tighter 3D Stacking (Prevents horizontal overflow) */
     .plan-card.active-card { transform: translateZ(150px); }
-    
     .plan-card.left-card { 
-        transform: translateX(-120px) translateZ(0px) rotateY(25deg) scale(0.8); 
+        transform: translateX(-100px) translateZ(-50px) rotateY(20px) scale(0.7); 
     }
     .plan-card.right-card { 
-        transform: translateX(120px) translateZ(0px) rotateY(-25deg) scale(0.8); 
+        transform: translateX(100px) translateZ(-50px) rotateY(-20px) scale(0.7); 
     }
-
     /* Hide Far-Left/Right on small screens to boost speed */
     .plan-card.far-left, .plan-card.far-right {
         display: none;
