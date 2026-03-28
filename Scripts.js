@@ -135,11 +135,37 @@ cards.forEach((card) => {
     });
 });
 
-// Start both typing effects on load
+/* --- 4.5 AUTO-PLAY ENGINE --- */
+let carouselInterval;
+
+function startCarouselAutoPlay() {
+    // Clear any existing timer first
+    stopCarouselAutoPlay(); 
+    
+    // Every 2 seconds (2000ms), we "shift" the array to move right
+    carouselInterval = setInterval(() => {
+        // This is the same logic as clicking a right-side card
+        cardClasses.unshift(cardClasses.pop());
+        updateCarousel();
+    }, 2000); 
+}
+
+function stopCarouselAutoPlay() {
+    clearInterval(carouselInterval);
+}
+
+// Attach listeners to pause movement when the user is interacting
+const carouselTrack = document.querySelector('.carousel-track');
+if (carouselTrack) {
+    carouselTrack.addEventListener('mouseenter', stopCarouselAutoPlay);
+    carouselTrack.addEventListener('mouseleave', startCarouselAutoPlay);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    type();          // Starts your Amharic name typing
-    typeBoxerBio();  // Starts the Boxer's HUD typing
-});;
+    type();          
+    typeBoxerBio();  
+    startCarouselAutoPlay(); // <--- ADD THIS LINE TO START THE MOVE
+});
 
 // 5. AUTOMATIC BOXER ROTATION
 let currentBoxerAngle = 0;
@@ -175,10 +201,4 @@ document.addEventListener("visibilitychange", () => {
     } else {
         resetBoxerTimer(); // Start fresh when you return
     }
-});
-
-// Add this at the end of your Scripts.js
-document.querySelector('.phone-link').addEventListener('click', function() {
-    console.log("Initiating call...");
-    // You could add a small toast notification here if you wanted!
 });
