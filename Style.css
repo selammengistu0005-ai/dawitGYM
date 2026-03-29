@@ -515,29 +515,27 @@ body.light-mode .dumbbell-icon {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* 2. The Paper Plane (The "Elite" CSS Triangle Method) */
 .paper-plane {
     position: relative;
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 30px solid white; /* The main body */
-    transform: rotate(45deg) translate(-2px, -4px);
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    /* This 'clip-path' draws the 5 exact points of the Telegram plane */
+    clip-path: polygon(0% 45%, 100% 0%, 45% 100%, 45% 55%, 75% 30%);
+    transform: rotate(-15deg) translate(-2px, 0);
 }
 
-/* 3. The "Cut-out" part of the plane */
+/* 3. The "Fold" (Gives it 3D depth) */
 .paper-plane::after {
     content: '';
     position: absolute;
-    top: 10px;
-    left: -15px;
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 30px solid #24A1DE; /* Matches background to "cut" the shape */
-    transform: scale(0.8);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); /* Subtle shadow on the fold */
+    /* This cuts out the smaller inner triangle 'fold' */
+    clip-path: polygon(45% 55%, 45% 100%, 75% 30%);
 }
 
 /* 4. Hover Effect */
@@ -737,17 +735,6 @@ body.light-mode .dumbbell-icon {
         letter-spacing: 2px;
         font-size: 0.9rem;
     }
-
-    /* 2. The Icon Row: Forces Telegram and Instagram to stay side-by-side */
-    .footer-social-row {
-        display: flex !important;
-        flex-direction: row !important; /* THIS IS THE SIDE-BY-SIDE MAGIC */
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 40px !important; /* Wide gap so they don't look crowded */
-        width: 100% !important;
-    }
-
     /* 3. The Icon Sizing */
     .telegram-icon, .instagram-icon {
         width: 45px !important; 
@@ -756,8 +743,23 @@ body.light-mode .dumbbell-icon {
     }
 
     /* Ensuring the plane and lens stay centered inside the smaller boxes */
+    /* 1. Alignment & Scaling */
+    
     .paper-plane, .camera-lens {
-        transform: scale(0.7) !important; 
+        transform: scale(0.65) rotate(-15deg) !important; /* Matches the new 'flying' angle */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-social-row {
+        display: flex !important;
+        flex-direction: row !important; 
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 25px !important; 
+        width: 100% !important;
+        padding: 10px 0;
     }
 }
 
