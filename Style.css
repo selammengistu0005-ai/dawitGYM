@@ -212,9 +212,18 @@ body.light-mode .dumbbell-icon {
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Changed from center to push text below image */
     text-align: center;
     user-select: none;
+    overflow: hidden; /* THE FIX: Clips the image to the rounded corners */
+}
+
+.card-image {
+    width: calc(100% + 50px); /* Offsets the 25px padding of the card */
+    margin: -25px -25px 15px -25px; /* Pulls image to the very top/sides of the card */
+    height: 200px;
+    object-fit: cover; /* THE FIX: Crops the photo perfectly without stretching */
+    border-bottom: 1px solid var(--border);
 }
 
 /* Hover Glow Effect */
@@ -606,8 +615,14 @@ body.light-mode .dumbbell-icon {
         visibility: hidden; /* Fades out instead of snapping off */
     }
     
-    /* Paste this inside your @media (max-width: 768px) query */
-
+    .plan-card .card-image {
+        height: 140px !important; 
+    /* Changed the first value from -12px to 8px to push it down from the top */
+        margin: 8px -12px 10px -12px !important; 
+        width: calc(100% + 24px) !important;
+        border-radius: 8px; /* Optional: adds a slight round to the image corners since it's no longer touching the card edge */
+    }
+    
 .bio-wrapper {
     flex-direction: column !important;
     padding-left: 0 !important;   /* Kills the 50px 'Invisible Wall' */
@@ -714,21 +729,33 @@ body.light-mode .dumbbell-icon {
         font-size: 0.9rem;
     }
     /* 3. The Icon Sizing */
-    .telegram-icon, .instagram-icon {
-        width: 45px !important; 
-        height: 45px !important;
-        margin: 0 !important;
-    }
-
-    /* Ensuring the plane and lens stay centered inside the smaller boxes */
-    /* 1. Alignment & Scaling */
+    /* 1. Sync the box shapes and sizes */
     
-    .paper-plane, .camera-lens {
-        transform: scale(0.65) rotate(-15deg) !important; /* Matches the new 'flying' angle */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    .telegram-icon, .instagram-icon {
+    width: 45px !important; 
+    height: 45px !important;
+    margin: 0 !important;
+    border-radius: 12px !important; /* THE FIX: Same radius for both creates a matched set */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* 2. Fix internal alignment and scaling */
+.paper-plane, .camera-lens {
+    /* Removed the rotate(-15deg) from the lens so only the plane flies */
+    transform: scale(0.6) !important; 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+}
+
+/* 3. Specifically rotate ONLY the plane so the Instagram lens stays straight */
+.paper-plane {
+    transform: scale(0.6) rotate(-15deg) !important;
+    margin-right: 2px !important; /* Centers the visual 'weight' of the plane */
+}
 
     .footer-social-row {
         display: flex !important;
@@ -750,5 +777,4 @@ body.light-mode .dumbbell-icon {
         width: 40px !important; /* Slightly smaller boxes for tiny screens */
         height: 40px !important;
     }
-}
 }
