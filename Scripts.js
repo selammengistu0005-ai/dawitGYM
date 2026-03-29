@@ -82,7 +82,7 @@ window.addEventListener("scroll", () => {
 
 // 4. 3D CAROUSEL ROTATION LOGIC
 const cards = document.querySelectorAll('.plan-card');
-let cardClasses = ['far-left', 'left-card', 'active-card', 'right-card', 'far-right'];
+let cardClasses = ['far-left', 'left-card', 'active-card', 'right-card'];
 
 function updateCarousel() {
     cards.forEach((card, i) => {
