@@ -130,6 +130,15 @@ function toggleTheme() {
     document.body.classList.toggle("light-mode");
 }
 
+// Stops the flipping when you switch tabs or minimize the window
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        stopBoxerAutoFlip();
+    } else {
+        startBoxerAutoFlip();
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Start the header typing immediately
     type(); 
@@ -159,8 +168,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, { threshold: 0.3 });
 
-    const target = document.getElementById("boxer-typing-text");
+   const target = document.getElementById("boxer-typing-text");
     if (target) observer.observe(target);
+
+    // ADD THIS LINE BELOW: Starts the flipping as soon as the page loads
+    startBoxerAutoFlip(); 
+
+    // AND ADD THIS: Stops the flip when you scroll away from the boxer
+    const boxerObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            startBoxerAutoFlip();
+        } else {
+            stopBoxerAutoFlip();
+        }
+    }, { threshold: 0.1 });
+
+    if (boxerPrism) boxerObserver.observe(boxerPrism);
 });
 
 let boxerRotation = 0;
@@ -173,5 +196,13 @@ function autoFlipBoxer() {
     }
 }
 
-// Start the 3-second auto-flip
-setInterval(autoFlipBoxer, 3000);
+let boxerInterval; // This will hold our timer so we can stop/start it
+
+function startBoxerAutoFlip() {
+    stopBoxerAutoFlip(); // Clear any existing timer first
+    boxerInterval = setInterval(autoFlipBoxer, 3000);
+}
+
+function stopBoxerAutoFlip() {
+    clearInterval(boxerInterval);
+}
