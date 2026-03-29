@@ -697,36 +697,14 @@ body.light-mode .dumbbell-icon {
 .face-1 { transform: rotateY(0deg) translateZ(100px) !important; }
 .face-2 { transform: rotateY(120deg) translateZ(100px) !important; }
 .face-3 { transform: rotateY(240deg) translateZ(100px) !important; }
-
-    /* Container for the icons */
-.follow-journey-icons {
-    display: flex;
-    flex-direction: row; /* Forces them side-by-side */
-    justify-content: center; /* Centers them under the text */
-    gap: 20px; /* Space between the two icons */
-    margin-top: 15px;
-}
-
-/* Making the icons smaller and responsive */
-.follow-journey-icons a img, 
-.follow-journey-icons a i {
-    width: 35px;  /* Adjust size as needed */
-    height: 35px;
-    font-size: 30px; /* If using FontAwesome icons */
-    transition: transform 0.3s ease;
-}
-
-/* Hover effect for a professional touch */
-.follow-journey-icons a:hover {
-    transform: scale(1.1);
-}
     /* 1. The Footer: Stacks text on top of the icons */
     .site-footer {
         display: flex !important;
-        flex-direction: column !important; /* Text on top, Icons below */
+        flex-direction: column !important; /* Forces Text on Top, Icons on Bottom */
         align-items: center !important;
+        text-align: center !important;
         padding: 30px 0 !important;
-        gap: 15px !important; /* Space between the text and the icons */
+        gap: 15px !important; 
     }
 
     .site-footer p {
@@ -765,10 +743,12 @@ body.light-mode .dumbbell-icon {
 
 /* Mobile Specific Tweaks */
 @media (max-width: 480px) {
-    .follow-journey-icons {
-        gap: 15px; /* Slightly tighter gap on very small phones */
+    .footer-social-row {
+        gap: 15px !important; /* Tighter spacing so icons don't hit screen edges */
     }
-    .follow-journey-icons a img {
-        width: 30px; /* Even smaller for tiny screens */
+    .telegram-icon, .instagram-icon {
+        width: 40px !important; /* Slightly smaller boxes for tiny screens */
+        height: 40px !important;
     }
+}
 }
